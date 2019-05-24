@@ -1,0 +1,28 @@
+[{
+    "course": 111110,
+    "name": "compro",
+    "group": "",
+    "day": "Md",
+    "time_start": "07",
+    "time_end": "08",
+    "place": ""
+  },
+  {
+    "course": 112340,
+    "name": "MATH",
+    "group": "",
+    "day": "Md",
+    "time_start": "09",
+    "time_end": "10",
+    "place": ""
+  },
+  {
+    "course": 111110,
+    "name": "compro",
+    "group": "",
+    "day": "Thd",
+    "time_start": "07",
+    "time_end": "08",
+    "place": ""
+  },
+]

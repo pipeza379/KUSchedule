@@ -1,0 +1,84 @@
+#box {
+    border: 0.5mm solid rgba(180, 179, 179, 0.644);
+    border-radius: 4px;
+    height: 500px;
+    overflow: hidden;
+    overflow-y: scroll;
+    /* overflow-x:scroll; */
+}
+
+.rm-btn {
+    border-radius: 50%;
+    height: 7mm;
+    width: 7mm;
+    border: none;
+    overflow: hidden;
+    background: rgb(92, 131, 182);
+}
+
+.rm-btn:hover {
+    border-radius: 50%;
+    height: 7mm;
+    width: 7mm;
+    border: none;
+    overflow: hidden;
+    background: rgb(53, 127, 224);
+}
+
+li {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+#list-subject {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+#list-subject:hover {
+    background-color: rgba(98, 192, 255, 0.493);
+    border-radius: 25px;
+}
+
+#head-list {
+    margin: 5px;
+}
+
+#list-head {
+    display: block;
+    height: 40px;
+    border-right: 1px solid white;
+    border-bottom: 0.5px solid white;
+    text-align: center;
+    background-image: linear-gradient(rgb(23, 99, 240), rgb(71, 151, 243), rgb(108, 189, 255));
+    color: white;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.btn-edit{
+    /* display: block; */
+    /* border:1px solid black; */
+}
+
+.days {
+    display: block;
+    width: 10%;
+}
+
+.course {
+    display: block;
+    width: 20%;
+}
+
+.subject {
+    display: block;
+    width: 40%;
+}
+
+.start, .end {
+    display: block;
+    width: 15%;
+}

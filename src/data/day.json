@@ -1,0 +1,30 @@
+[
+    {
+        "value": "Md",
+        "label": "Monday"
+    },
+    {
+        "value": "Td",
+        "label": "Tuesday"
+    },
+    {
+        "value": "Wd",
+        "label": "Wednesday"
+    },
+    {
+        "value": "Thd",
+        "label": "Thursday"
+    },
+    {
+        "value": "Fd",
+        "label": "Friday"
+    },
+    {
+        "value": "Sd",
+        "label": "Saturday"
+    },
+    {
+        "value": "Sud",
+        "label": "Sunday"
+    }
+]

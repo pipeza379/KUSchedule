@@ -1,0 +1,10 @@
+.side{
+    position: relative;
+    /* position: absolute; */
+    z-index: inherit -5;;
+    /* top: 50%; */
+    width: 5%;
+    margin-left: 3%;
+    display: block;
+    border: 3px solid black;
+}

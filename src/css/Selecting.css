@@ -1,0 +1,25 @@
+select[class="course"]{
+    width: 100%;
+    margin-bottom: 3.5%;
+    /* margin-top: 20px; */
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    background: rgb(255, 255, 255);
+    border: 0.35mm solid rgb(193, 193, 194);
+    border-radius: 4px;
+}
+
+select[class="course"]:hover{
+    border: 0.35mm solid rgb(159, 159, 160);
+}
+
+option[value=""] {
+    display: none;
+}
+
+/* .input-serch{
+    position:relative;
+    border-right:none;
+    padding:none;
+} */

@@ -1,0 +1,107 @@
+Table {
+    text-align: center;
+    border: 2.4px solid rgb(61, 61, 63);
+    /* table-layout: auto; */
+    /* border-inline-end: 1px solid black; */
+}
+
+#table {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 5%;
+    width: 70%;
+    border-collapse: collapse;
+}
+
+/* @media only screen and (min-width:800px){
+    table,thead,tbody,th,td,tr{
+        display: block;
+    }
+} */
+
+#head {
+    border: 1px solid rgb(90, 84, 84);
+    height: 97px;
+}
+
+/* .base {
+    background-color: rgb(61, 61, 63);
+    width: 4.3478%;
+} */
+
+/* .time{
+} */
+
+td[rowSpan="1"] {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    /* border: 1px solid white; */
+    padding: 5px 5px;
+    font-size: 60%;
+}
+
+.time, tr, th,td {
+    /* border: 1px solid white; */
+}
+
+#Md, #Td, #Wd, #Thd, #Fd, #Sd, #Sud, .space {
+    /* border-top: 1px solid white; */
+    border-bottom: 1px solid white;
+    border-right:1px solid white;
+}
+
+#Md[q="even"] {
+    background-color: #FFF59D;
+}
+
+#Md[q="odd"] {
+    background-color: #FDF079;
+}
+
+#Td[q="even"] {
+    background-color: #F8BBD0;
+}
+
+#Td[q="odd"] {
+    background-color: #F48FB1;
+}
+
+#Wd[q="even"] {
+    background-color: #93DD93;
+}
+
+#Wd[q="odd"] {
+    background-color: #7DDA7D;
+}
+
+#Thd[q="even"] {
+    background-color: #FFE0B2;
+}
+
+#Thd[q="odd"] {
+    background-color: #FFCC80;
+}
+
+#Fd[q="even"] {
+    background-color: #81DdFA;
+}
+
+#Fd[q="odd"] {
+    background-color: #5CC3FA;
+}
+
+#Sd[q="even"] {
+    background-color: #D5A5FF;
+}
+
+#Sd[q="odd"] {
+    background-color: #B263E7;
+}
+
+#Sud[q="even"] {
+    background-color: #FFA5A5;
+}
+
+#Sud[q="odd"] {
+    background-color: #FE7878
+}
