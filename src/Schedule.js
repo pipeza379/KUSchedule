@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table'
 import './css/schedule.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import styled from 'styled-components'
-import { Container} from 'reactstrap';
+// import { Container} from 'reactstrap';
 
 
 var boxSpace = {
@@ -23,10 +23,10 @@ var len = 20
 const ST = 8
 const LT = 17
 
-var Tds = styled.td`
-    background-color: rgb(61, 61, 63);
-    width: ${100 / len}%;
-`
+// var Tds = styled.td`
+//     background-color: rgb(61, 61, 63);
+//     width: ${100 / len}%;
+// `
 
 
 class Schedule extends Component {

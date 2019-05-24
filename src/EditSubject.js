@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { SliderPicker, CompactPicker } from 'react-color'
-import Select from 'react-select'
+import { CompactPicker } from 'react-color'
+// import Select from 'react-select'
 
 import './css/EditSubject.css'
 import { ReactComponent as AddBtn } from './icon/add.svg'
