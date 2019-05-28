@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a73d88847dfd9ab89483f89ed7265f03",
+    "revision": "91c98be6e70195bdf002317d7fa140a9",
     "url": "/KUSchedule/index.html"
   },
   {
-    "revision": "92d8f78d0f5a65b364be",
+    "revision": "2e0dc86d2d482ecf700e",
     "url": "/KUSchedule/static/css/2.0f7a873c.chunk.css"
   },
   {
-    "revision": "763353684ac2ad5ae8b3",
-    "url": "/KUSchedule/static/css/main.8b46eff5.chunk.css"
+    "revision": "536e8e008ca53e6fd88c",
+    "url": "/KUSchedule/static/css/main.e317cbb3.chunk.css"
   },
   {
-    "revision": "92d8f78d0f5a65b364be",
-    "url": "/KUSchedule/static/js/2.2b51da73.chunk.js"
+    "revision": "2e0dc86d2d482ecf700e",
+    "url": "/KUSchedule/static/js/2.11d2fbf1.chunk.js"
   },
   {
-    "revision": "763353684ac2ad5ae8b3",
-    "url": "/KUSchedule/static/js/main.aceb6f36.chunk.js"
+    "revision": "536e8e008ca53e6fd88c",
+    "url": "/KUSchedule/static/js/main.c39df72a.chunk.js"
   },
   {
     "revision": "5dfff5d554c5f1c8460c",
@@ -38,6 +38,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "45b30f6af163a69443f70b9e363a9a6e",
     "url": "/KUSchedule/static/media/edit.45b30f6a.svg"
+  },
+  {
+    "revision": "76e463481c7f1ce3a89a66d5e38c997d",
+    "url": "/KUSchedule/static/media/eraser.76e46348.svg"
   },
   {
     "revision": "24a93bb6a956c41e0f5fde63df92e183",
