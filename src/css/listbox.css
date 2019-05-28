@@ -1,12 +1,51 @@
-#box {
-    border: 0.5mm solid rgba(180, 179, 179, 0.644);
-    border-radius: 4px;
-    height: 500px;
-    overflow: hidden;
-    overflow-y: scroll;
-    /* overflow-x:scroll; */
+.rm {
+    cursor: pointer;
 }
 
+.edit {
+    cursor: pointer;
+}
+
+.box {
+    border: 2px groove rgba(151, 151, 151, 0.473);
+    box-shadow: 3px 5px 3px rgb(151, 151, 151);
+    /* border-radius: 10px; */
+    height: 400px;
+    padding: 15px 15px 15px 15px;
+    overflow: auto;
+    /* overflow-y: scroll; */
+}
+
+.box::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+
+.box::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 5px grey; */
+    /* border-radius: 10px; */
+}
+
+/* Handle */
+
+.box::-webkit-scrollbar-thumb {
+    background:#343A40;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+
+.box::-webkit-scrollbar-thumb:hover {
+    background: rgb(151, 151, 151);
+}
+
+
+.card:hover {
+    box-shadow: 2px 4px 10px rgb(151, 151, 151);
+}
+
+/*
 .rm-btn {
     border-radius: 50%;
     height: 7mm;
@@ -23,15 +62,9 @@
     border: none;
     overflow: hidden;
     background: rgb(53, 127, 224);
-}
+} */
 
-li {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-}
-
-#list-subject {
+/* #list-subject {
     margin: 5px;
     padding: 10px;
     border-radius: 15px;
@@ -56,14 +89,9 @@ li {
     color: white;
     padding: 5px;
     text-decoration: none;
-}
+} */
 
-.btn-edit{
-    /* display: block; */
-    /* border:1px solid black; */
-}
-
-.days {
+/* .days {
     display: block;
     width: 10%;
 }
@@ -81,4 +109,4 @@ li {
 .start, .end {
     display: block;
     width: 15%;
-}
+} */

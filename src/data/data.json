@@ -1,0 +1,26 @@
+[
+    {
+    "value":{
+        "course":"122440",
+        "name":"Comarchitecture"
+    },
+    "text":"122440 comarc สถาปัตยกรรมคอมพิวเตอร์",
+    "key":0
+},
+{
+    "value":{
+        "course":"111120",
+        "name":"Math"
+    },
+    "text":"111120 math แมท",
+    "key":1
+},
+{
+    "value":{
+        "course":"111110",
+        "name":"Compro"
+    },
+    "text":"111110 Compro คอมโปร",
+    "key":2
+}
+]

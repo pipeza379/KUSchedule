@@ -1,6 +1,8 @@
 Table {
     text-align: center;
     border: 2.4px solid rgb(61, 61, 63);
+    table-layout:fixed; 
+    width:100%;
     /* table-layout: auto; */
     /* border-inline-end: 1px solid black; */
 }
@@ -20,7 +22,7 @@ Table {
 } */
 
 #head {
-    border: 1px solid rgb(90, 84, 84);
+    border: 1px solid rgb(61, 61, 63);
     height: 97px;
 }
 
@@ -40,8 +42,9 @@ td[rowSpan="1"] {
     font-size: 60%;
 }
 
-.time, tr, th,td {
-    /* border: 1px solid white; */
+.row #table .head .time{
+    border-right: 1px solid rgb(151, 151, 151);
+    border-bottom: 1px solid rgb(170, 169, 169);
 }
 
 #Md, #Td, #Wd, #Thd, #Fd, #Sd, #Sud, .space {

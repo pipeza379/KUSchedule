@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import './css/course.css'
-import 'bootstrap/dist/css/bootstrap.css'
 import './css/Sidebar.css'
-import Select from 'react-select'
-// import { Container, Row, Col } from 'reactstrap';
-import { Button, ButtonGroup } from 'reactstrap'
+// import Select from 'react-select'
 import { ReactComponent as Down } from './icon/down.svg'
 import { ReactComponent as Up } from './icon/up.svg'
+import { Container, Row, Col } from 'reactstrap';
+import { Dropdown } from 'semantic-ui-react';
 import ListBox from './ListBox'
-import Selecting from './Selecting'
+// import Selecting from './Selecting'
 import Schedule from './Schedule'
 // import Sidebar from './Sidebar'
 
-import Time from './data/time.json'
-import Day from './data/day.json'
+import Time from './data/time2.json'
+import Day from './data/day2.json'
+import Data from './data/data.json'
 
 
 var data = [
@@ -53,18 +53,18 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sel: "",
       schedule: data,
-      click: false,
-      isHiddenMain: true,
-      isHiddenOther: false,
+      isActiveMain: true,
+      isActiveOther: false,
       isHiddenDetail: false,
-      selectTimeStart: null,
-      selectTimeEnd: null,
-      selectDay: null,
-      dayInput: "",
-      timeStartInput: "",
-      timeEndInput: "",
+      valSub: "",
+      invalid: {
+        course: "",
+        name: "",
+        day: "",
+        timeStart: "",
+        timeEnd: "",
+      },
       data: {
         "course": "",
         "name": "",
@@ -79,31 +79,46 @@ class App extends Component {
     }
     this.addBtn = this.addBtn.bind(this)
     this.addValue = this.addValue.bind(this)
-    this.selCourse = this.selCourse.bind(this)
+    // this.selCourse = this.selCourse.bind(this)
     this.dataFromList = this.dataFromList.bind(this)
-    // this.handleChange = this.handleChange.bind(this)
   }
 
   addBtn() {
-    let { day, timeStart, timeEnd, course } = this.state.data
-    // console.log(this.state)
-    if (this.state.selectDay === null)
-      this.setState({ dayInput: "invalidInput" })
-    if (this.state.selectTimeStart === null)
-      this.setState({ timeStartInput: "invalidInput" })
-    if (this.state.selectTimeEnd === null)
-      this.setState({ timeEndInput: "invalidInput" })
-    if (course !== "" && day !== "" && timeStart !== "" && timeEnd !== "" && (timeEnd > timeStart)) {
+    let { day, name, timeStart, timeEnd, course } = this.state.data
+    console.log(this.state.data)
+    let inp_course, inp_name, inp_day, inp_ts, inp_te = ""
+
+    inp_name = "invalidInput"
+    inp_course = course === "" ? "invalidInput" : ""
+    inp_name = name === "" ? "invalidInput" : ""
+    inp_day = day === "" ? "invalidInput" : ""
+    inp_ts = timeStart === "" || (timeEnd !== "" && timeStart >= timeEnd) ? "invalidInput" : ""
+    inp_te = timeEnd === "" || (timeStart !== "" && timeEnd <= timeStart) ? "invalidInput" : ""
+
+    this.setState({
+      invalid: {
+        course: inp_course,
+        name: inp_name,
+        day: inp_day,
+        timeStart: inp_ts,
+        timeEnd: inp_te,
+      }
+    })
+
+    if (course !== "" && name !== "" && day !== "" && timeStart !== "" && timeEnd !== "" && (timeEnd > timeStart)) {
       console.log("data: ", this.state.data)
       this.state.schedule.push(this.state.data)
       console.log("schedule : ", this.state.schedule)
       this.setState(
         {
-          dayInput: '',
-          click: true,
-          selectTimeStart: null,
-          selectTimeEnd: null,
-          selectDay: null,
+          valSub: "",
+          invalid: {
+            course: "",
+            name: "",
+            day: "",
+            timeStart: "",
+            timeEnd: "",
+          },
           data: {
             course: "",
             name: "",
@@ -117,15 +132,11 @@ class App extends Component {
         }
       )
     }
-    // console.log(this.state.schedule)
-    // this.state.table.push(<p className="text-table"><button className="rm-btn" >X</button>{course} {name}</p>)
-
   }
 
   addValue = e => {
     let value = e.target.value
-    let name = e.target.placeholder
-    // console.log(value, name);
+    let name = e.target.className
 
     //preVState is other data
     this.setState(prevState => (
@@ -135,159 +146,185 @@ class App extends Component {
           [name]: value
         }
       }))
-    // console.log(this.state.data);
   }
 
   dataFromList = (newData) => {
     this.setState({ schedule: newData })
   }
 
-  selCourse(sel) {
-    this.setState(prevState => (
-      {
-        //prevState is other data if this don't have data will left 'name' and 'course'
-        click: false,
-        data: {
-          ...prevState.data,
-          course: sel.course,
-          name: sel.name
-        }
-      }))
-  }
+  // selCourse = sel => {
+  //   console.log(sel)
+  //   this.setState(prevState => (
+  //     {
+  //       //prevState is other data if this don't have data will left 'name' and 'course'
+  //       click: false,
+  //       data: {
+  //         ...prevState.data,
+  //         course: sel.course,
+  //         name: sel.name
+  //       }
+  //     }))
+  // }
 
-  handleChange(set, select) {
-    let time = select.value
-    // console.log(select.target.className)
+  handleChange = (set, event, data) => {
+    let val = data.value
     if (set === "timeStart") {
       this.setState(prevState => (
         {
-          timeStartInput: "",
-          selectTimeStart: select,
           data: {
             ...prevState.data,
-            timeStart: time
+            timeStart: val
           }
         }))
     }
     else if (set === "timeEnd") {
       this.setState(prevState => (
         {
-          timeEndInput: "",
-          selectTimeEnd: select,
           data: {
             ...prevState.data,
-            timeEnd: time
+            timeEnd: val
           }
         }))
     }
     else if (set === "day") {
       this.setState(prevState => (
         {
-          dayInput: "",
-          selectDay: select,
           data: {
             ...prevState.data,
-            day: time
+            day: val
           }
         }))
     }
-    // console.log(`Option selected:`, this.state.data);
-
+    else if (set === "subject") {
+      let { course, name } = val
+      this.setState(prevState => (
+        {
+          valSub: val,
+          //prevState is other data if this don't have data will left 'name' and 'course'
+          data: {
+            ...prevState.data,
+            course,
+            name
+          }
+        }))
+    }
   }
 
   hidden = (set) => {
     if (set === "main") {
       this.setState({
-        isHiddenMain: true,
-        isHiddenOther: false,
+        isActiveMain: true,
+        isActiveOther: false,
       })
     }
     else if (set === "other") {
       this.setState({
-        isHiddenMain: false,
-        isHiddenOther: true,
+        isActiveMain: false,
+        isActiveOther: true,
+      })
+    }
+    else if (set === "detail") {
+      this.setState({
+        isHiddenDetail: !this.state.isHiddenDetail
       })
     }
   }
-  showDetail = () => {
-    this.setState({
-      isHiddenDetail: !this.state.isHiddenDetail
-    })
+
+  tab = (active) => {
+    return active ? "active item" : "item"
   }
 
   render() {
+
+
     return (
       <React.Fragment>
         <br />
         <br />
+        <h1 style={{ textAlign: "center" }}>KUSchedule</h1>
         <br />
         <hr />
         <br />
         {/* <div style={{ display: 'flex', alignItems: 'flex-start' }}> */}
         {/* <StickyBox className="sidebar">Sidebar</StickyBox> */}
         {/* <Sidebar /> */}
-        <div>
-          <div className="row">
-            <div className="col-sm-1 col-md-3" />
-            <div className="col-sm-4 col-md-6">
+        <Container>
+          <Row>
+            <Col>
               <div className="add-sub">
-                <br />
                 <h3 className="sel-course">Add subject</h3>
+                <br />
                 <div className="main-course">
-                  <div className="tabInput">
-                    <ButtonGroup>
-                      <Button onClick={this.hidden.bind(this, "main")}>วิชาบูรณาการ</Button>
-                      <Button onClick={this.hidden.bind(this, "other")}>อื่นๆ</Button>
-                    </ButtonGroup>
-                  </div>
-                  <br />
-                  {this.state.isHiddenMain && <Selecting className="subject" value={this.state.data.course} onChange={this.selCourse} select="course" />}
-                  {this.state.isHiddenOther &&
-                    <div className="row">
-                      <div className="col-sm-5 col-md-6"> <input className="course" value={this.state.data.course} type="course" placeholder="course" onChange={this.addValue} /></div>
-                      <div className="col-sm-5 col-md-6"> <input className="name" value={this.state.data.name} type="course" placeholder="name" onChange={this.addValue} /></div>
+                  <Row><Col md={10}>
+                    <div id="tab" className="ui pointing menu" >
+                      <span className={this.tab(this.state.isActiveMain)} onClick={this.hidden.bind(this, "main")}>วิชาบูรณาการ</span>
+                      <span className={this.tab(this.state.isActiveOther)} onClick={this.hidden.bind(this, "other")}>อื่นๆ</span>
                     </div>
+                  </Col></Row>
+                  {this.state.isActiveMain &&
+                    <Row><Col md={10}>
+                      <Dropdown style={{ width: "100%", borderRadius: "25px", marginBottom: "4%", border: `${this.state.inputSelSub}` }}
+                        id={this.state.invalid.name} placeholder="Select Subject" value={this.state.valSub}
+                        search selection options={Data} onChange={this.handleChange.bind(this, "subject")} />
+                    </Col></Row>}
+                  {this.state.isActiveOther &&
+                    <Row>
+                      <Col md={5}> <input className="course" id={this.state.invalid.course} value={this.state.data.course} placeholder="Course" onChange={this.addValue} /></Col>
+                      <Col md={5}> <input className="name" id={this.state.invalid.name} value={this.state.data.name} placeholder="Subject" onChange={this.addValue} /></Col>
+                    </Row>
                   }
-                  <div className="row">
-                    <div className="col-sm-8 col-md-12">
-                      <Select id={this.state.dayInput} className="day" value={this.state.selectDay} onChange={this.handleChange.bind(this, 'day')} options={Day} isSearchable={false} />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-sm-4 col-md-6">
-                      <Select id={this.state.timeStartInput} className="timestart" value={this.state.selectTimeStart} onChange={this.handleChange.bind(this, 'timeStart')} options={Time} />
-                      {/* <input className="time" value={this.state.data.time_start} type="course" placeholder="time_start" onChange={this.addValue} /> */}
-                    </div>
-                    <div className="col-sm-4 col-md-6">
-                      <Select id={this.state.timeEndInput} className="timeend" value={this.state.selectTimeEnd} onChange={this.handleChange.bind(this, 'timeEnd')} options={Time} />
-                      {/* <input className="time" value={this.state.data.timeEnd} type="course" placeholder="time_end" onChange={this.addValue} /> */}
-                    </div>
-                  </div>
+                  <Row>
+                    <Col md={10}>
+                      <Dropdown style={{ width: "100%", borderRadius: "25px", marginBottom: "4%" }}
+                        id={this.state.invalid.day} placeholder="Select Day" value={this.state.data.day}
+                        selection options={Day} onChange={this.handleChange.bind(this, 'day')} />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md={5}>
+                      <Dropdown style={{ width: "100%", borderRadius: "25px", marginBottom: "4%", position: "relative" }}
+                        id={this.state.invalid.timeStart} placeholder="Select Start" value={this.state.data.timeStart}
+                        selection options={Time} onChange={this.handleChange.bind(this, 'timeStart')} />
+                    </Col>
+                    <Col md={5}>
+                      <Dropdown style={{ width: "100%", borderRadius: "25px", marginBottom: "4%", position: "relative" }}
+                        id={this.state.invalid.timeEnd} placeholder="Select End" value={this.state.data.timeEnd}
+                        selection clearable={true} options={Time} onChange={this.handleChange.bind(this, 'timeEnd')} />
+                    </Col>
+                  </Row>
                   <br />
-                  <h6 >Detail{!this.state.isHiddenDetail && <Down id="down" onClick={this.showDetail} />}{this.state.isHiddenDetail && <Up id="down" onClick={this.showDetail} />}</h6>
-                  {this.state.isHiddenDetail &&
-                    <div className="row">
-                      <div className="col-sm-3 col-md-5"> <input className="sec" value={this.state.data.sec} type="course" placeholder="sec" onChange={this.addValue} /></div>
-                      <div className="col-sm-3 col-md-5"> <input className="place" value={this.state.data.place} type="course" placeholder="place" onChange={this.addValue} /></div>
-                    </div>
-                  }
-                  {!this.state.isHiddenDetail && <h5 id="showDetail"></h5>}
+                  <Row><Col md={10}>
+                    <h6 >Detail{!this.state.isHiddenDetail && <Down id="down" onClick={this.hidden.bind(this, "detail")} />}{this.state.isHiddenDetail && <Up id="down" onClick={this.hidden.bind(this, "detail")} />}</h6>
+                    {this.state.isHiddenDetail &&
+                      <div>
+                        <br/>
+                        <Row>
+                          <Col><input className="sec" value={this.state.data.sec} placeholder="Sec" onChange={this.addValue} /></Col>
+                          <Col><input className="place" value={this.state.data.place} placeholder="Place" onChange={this.addValue} /></Col>
+                        </Row>
+                        <Row>
+                          <Col><input className="other" value={this.state.data.sec} placeholder="Other" onChange={this.addValue} /></Col>
+                        </Row>
+                      </div>
+
+                    }
+                    <button onClick={this.addBtn} className="add-btn" >ADD</button>
+                  </Col></Row>
+                  {!this.state.isHiddenDetail && <span id="showDetail" />}
                 </div>
                 <br />
-                <button onClick={this.addBtn} className="add-btn" >ADD</button>
                 <br />
                 <br />
               </div>
-            </div>
-            <div className="col-sm-1 col-md-3" />
-          </div>
-          <br />
-          <br />
-          <ListBox clickState={this.state.click} dataFromList={this.dataFromList} data={this.state.schedule} />
-          <br />
-          {/* <Schedule/> */}
-          <Schedule data={this.state.schedule} />
-        </div>
+            </Col>
+            <Col>
+              <ListBox clickState={this.state.click} dataFromList={this.dataFromList} data={this.state.schedule} />
+            </Col>
+            <br />
+          </Row>
+        </Container>
+        <Schedule data={this.state.schedule} />
+
         {/* </div> */}
       </React.Fragment>
     );

@@ -1,10 +1,13 @@
 import React from 'react'
-import EditSubject from './EditSubject'
 
 import './css/listbox.css'
-import 'bootstrap/dist/css/bootstrap.css'
+import Time from './data/time2.json'
+import Day from './data/day2.json'
 
 import { ReactComponent as Edit } from './icon/edit.svg'
+import { ReactComponent as Erase } from './icon/eraser.svg'
+import { Container, Row, Col } from 'reactstrap';
+import { Card, CardContent, CardDescription, CardHeader} from "semantic-ui-react";
 
 class ListBox extends React.Component {
     constructor() {
@@ -21,6 +24,10 @@ class ListBox extends React.Component {
     }
 
     delBtn = (e) => {
+        console.log("del")
+        let index = e.target.getAttribute('index')
+        console.log(index)
+        console.log(e.target)
         if (this.props.dataFromList) {
             let index = e.target.getAttribute('index')
             let data = this.props.data
@@ -44,20 +51,32 @@ class ListBox extends React.Component {
         var x = 0
         if (this.props.data) {
             let table = []
-            this.props.data.map((v) => {
+            this.props.data.forEach((v) => {
+                let ts = Time[(v.timeStart * 2) - 12]
+                let te = Time[(v.timeEnd * 2) - 12]
+                let place = v.place === "" ? '' : "Place "+v.place
+                let sec = v.sec === "" ? '' : "Sec "+v.sec
+                let c = Day.filter(d => d.value === v.day)
                 table.push(
-                    <div id="list-subject" className="row">
-                        <li className="col-1" ><button className="rm-btn" index={x} course={v.course} onClick={this.delBtn}>X</button></li>
-                        <li className="col-3" index={x} onClick={this.selectSubject}>{v.course}</li>
-                        <li className="col-5" index={x} onClick={this.selectSubject}>{v.name}</li>
-                        <li className="col-1" index={x} onClick={this.selectSubject}>{v.timeStart}</li>
-                        <li className="col-1" index={x} onClick={this.selectSubject}>{v.timeEnd}</li>
-                        <li className="col-1"><Edit onClick={this.editSubject} className="btn-edit" /></li>
-                        {/* <i class="material-icons" style="font-size:48px;color:red">border_color</i> */}
-                    </div>
+                    <Card className="card" fluid color={c[0].color} key={x} >
+                        <CardContent>
+                            <CardHeader>
+                                <Row style={{ padding: "5px 20px 0px 0px " }}>
+                                    <Col md={10}>
+                                        <span>{v.course} {v.name}</span>
+                                    </Col>
+                                    <Col md={1}><Erase className="rm" index={x} onClick={this.delBtn}></Erase></Col>
+                                    <Col md={1}><Edit className="edit" index={x} onClick={this.editSubject} /></Col>
+                                </Row>
+                            </CardHeader>
+                            <CardDescription>
+                                <span style={{ padding: "0px 0px 0px 20px " }}>{sec} {place} Time: {ts.text} - {te.text}</span>
+                            </CardDescription>
+
+                        </CardContent>
+                    </Card>
                 )
                 x += 1
-                return 0
             })
             return table
         }
@@ -66,30 +85,22 @@ class ListBox extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <div className="row">
-                    <div className="col-sm-1 col-md-1" />
-                    <div className="col-sm-7 col-md-6">
-                        <h3 id="ListBox">List Subjects</h3>
-                        <br />
-                        <div id="box" className="align-middle">
-                            <div id="head-list" className="row">
-                                <li id="list-head" className="col-1"></li>
-                                <li id="list-head" className="col-3">Course</li>
-                                <li id="list-head" className="col-5">Subject</li>
-                                <li id="list-head" className="col-1">Start</li>
-                                <li id="list-head" className="col-1">End</li>
-                                <li id="list-head" className="col-1"></li>
-                            </div>
+                <Container fluid>
+                    <h3 id="ListBox">List Subjects</h3>
+                    <br />
+                    <div className="box">
+                        <Card.Group>
+
                             {this.createTable()}
-                        </div>
+
+                        </Card.Group>
                     </div>
-                    <div className="col-sm-3 col-md-4">
-                        <div className="row">
-                            {this.state.isHidden && <EditSubject data={this.props.data[this.state.selectCurrent]} />}
-                        </div>
-                    </div>
-                    <div className="col-sm-1 col-md-1" />
-                </div>
+                    <br/>
+                    <br/>
+                    {/* <Col>
+                        {this.state.isHidden && <EditSubject data={this.props.data[this.state.selectCurrent]} />}
+                    </Col> */}
+                </Container>
             </React.Fragment>
         )
     }

@@ -1,0 +1,37 @@
+[
+    {
+        "value": "Md",
+        "text": "Monday",
+        "color": "yellow"
+    },
+    {
+        "value": "Td",
+        "text": "Tuesday",
+        "color":"pink"
+    },
+    {
+        "value": "Wd",
+        "text": "Wednesday",
+        "color":"green"
+    },
+    {
+        "value": "Thd",
+        "text": "Thursday",
+        "color":"orange"
+    },
+    {
+        "value": "Fd",
+        "text": "Friday",
+        "color":"blue"
+    },
+    {
+        "value": "Sd",
+        "text": "Saturday",
+        "color":"purple"
+    },
+    {
+        "value": "Sud",
+        "text": "Sunday",
+        "color":"red"
+    }
+]
