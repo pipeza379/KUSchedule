@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { CompactPicker } from 'react-color'
 // import Select from 'react-select'
 
-import './css/EditColor.css'
-import { ReactComponent as AddBtn } from './icon/add.svg'
-import { ReactComponent as ColorBtn } from './icon/edit-color.svg'
+import '../css/EditColor.css'
+import { ReactComponent as AddBtn } from '../icon/add.svg'
+import { ReactComponent as ColorBtn } from '../icon/edit-color.svg'
 
 
 

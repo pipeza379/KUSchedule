@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table'
-import './css/schedule.css';
+import '../css/schedule.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import EditColor from './EditColor';
 import { Popup, Button } from 'semantic-ui-react';
@@ -59,10 +59,21 @@ class Schedule extends Component {
         // console.log(this.state.startTime,this.state.lastTime)
     }
 
-    // shouldComponentUpdate(nextProps){
-    //     if(this.props.data === nextProps.data)
-    //         return false
+    // shouldComponentUpdate(nextProps,nextState){
+    //     if(this.props.data !== nextProps.data || this.state !== nextState){
+    //         return true
+    //     }
+    //     // if(this.state !== nextState)
+    //     //     return true
+    //     return false
     // }
+
+    // componentWillUpdate(nextProps){
+    //     if(this.props.data !== nextProps.data)
+    //         this.setTime()
+
+    // }
+
 
     representData = () => {
         // console.log(this.props.data)
@@ -200,9 +211,9 @@ class Schedule extends Component {
         D.sort((a, b) => parseFloat(a.timeStart) - parseFloat(b.timeStart))
         let prev = 0
         for (let i = 1; i < D.length; i++) {
-            console.log(prev, i)
+            // console.log(prev, i)
             if (D[i].timeStart < D[prev].timeEnd) {
-                console.log(D, D2)
+                // console.log(D, D2)
                 D[prev].overlap = true
                 D2.push(D[i])
                 rm.push(i)
@@ -217,7 +228,7 @@ class Schedule extends Component {
         for (let i = 0; i < rm.length; i++)
             delete D[rm[i]];
         D = D.filter(() => { return true })
-        let endBef=-1
+        // let endBef=-1
         // D2.forEach(v=>{
         //     if(endBef!==-1){
         //         box2.push(D[prev.time])
@@ -225,7 +236,7 @@ class Schedule extends Component {
         //     endBef = v.timeEnd
         // })
 
-        console.log(box, box2)
+        // console.log(box, box2)
 
         return [D, D2, box, box2]
 
@@ -349,10 +360,8 @@ class Schedule extends Component {
         // })
         head.push(<th colSpan="2">#</th>)
         for (let i = start; i < end; i++) {
-            if (i < 10)
-                head.push(<th className="time" colSpan="2">0{i}.00</th>)
-            else if (i >= 10)
-                head.push(<th className="time" colSpan="2">{i}.00</th>)
+            let time = i < 10 ? `0${i}.00` : `${i}.00`
+            head.push(<th className="time" colSpan="2">{time}</th>)
         }
         return head
     }

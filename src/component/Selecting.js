@@ -1,6 +1,6 @@
 import React from 'react';
-import './css/Selecting.css';
-import data from './data/test.json'
+import '../css/Selecting.css';
+import data from '../data/test.json'
 
 class Selecting extends React.Component {
     constructor() {
