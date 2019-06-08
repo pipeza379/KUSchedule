@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d56e58dd32026387f42336de5428990f",
+    "revision": "4a756c9e0b05b8f651a1ff90a8a978e3",
     "url": "/KUSchedule/index.html"
   },
   {
-    "revision": "ff7de9a61f277c7b737e",
+    "revision": "933083c366aee32ffc04",
     "url": "/KUSchedule/static/css/2.0f7a873c.chunk.css"
   },
   {
-    "revision": "8be07fed0465273711bb",
-    "url": "/KUSchedule/static/css/main.cb08985d.chunk.css"
+    "revision": "526981a1b34fef1d2aed",
+    "url": "/KUSchedule/static/css/main.bf5e026e.chunk.css"
   },
   {
-    "revision": "ff7de9a61f277c7b737e",
-    "url": "/KUSchedule/static/js/2.dbeabd6a.chunk.js"
+    "revision": "933083c366aee32ffc04",
+    "url": "/KUSchedule/static/js/2.76f4f895.chunk.js"
   },
   {
-    "revision": "8be07fed0465273711bb",
-    "url": "/KUSchedule/static/js/main.d9b2d082.chunk.js"
+    "revision": "526981a1b34fef1d2aed",
+    "url": "/KUSchedule/static/js/main.c89fe1df.chunk.js"
   },
   {
     "revision": "5dfff5d554c5f1c8460c",
