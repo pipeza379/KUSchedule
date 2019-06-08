@@ -23,6 +23,11 @@ export function addValue(data) {
             type: Action.ADDPLACE,
             [name]: value,
         })
+    else if(name==="schedule-name")
+    return ({
+        type: Action.SCHEDULENAME,
+        [name]: value,
+    })
 }
 
 

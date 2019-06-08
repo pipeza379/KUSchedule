@@ -14,8 +14,10 @@ export default class Action {
 
     //BTN'ADD' ONCLICK
     static ADDDATA='ADDDATA'
+    static SCHEDULENAME='ADDSCHEDULENAME'
     
     static REMOVESUBJECT='REMOVESUBJECT'
+    static EDITSUBJECT='EDITSUBJECT'
 
     selectColor = () => {
 

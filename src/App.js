@@ -1,18 +1,52 @@
 import React, { Component } from 'react'
-import './css/course.css'
-import './css/Sidebar.css'
+import './css/app.css'
+// import './css/Sidebar.css'
 import { Container, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import InputSubject from './component/addSubject'
 import ListBox from './component/ListBox'
 // import Selecting from './Selecting'
 import Schedule from './component/Schedule'
 // import Sidebar from './Sidebar'
+import LoadSave from './component/LoadSave'
+
+import * as addingAction from './actions/addSub'
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      checkClick: false,
+      editName: false,
+    }
+  }
+
+  componentDidMount(prevState) {
+    if (this.state !== prevState) {
+      this.setState({
+        checkClick: false,
+      })
+    }
+  }
+
+  handleSaveToPC = jsonData => {
+    const fileData = JSON.stringify(jsonData);
+    const blob = new Blob([fileData], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.download = 'filename.json';
+    link.href = url;
+    if (this.state.checkClick)
+      link.click();
+  }
+
+  editName = () => {
+    this.setState({ editName: true })
+  }
+
   render() {
-    
     const schedule = this.props.schedule
     console.log(schedule)
     return (
@@ -30,23 +64,35 @@ class App extends Component {
           <Row>
             <Col>
               <InputSubject />
+              {/* <button onClick={() => { this.setState({ checkClick: true }) }}>click!</button> */}
+              {/* {this.handleSaveToPC(schedule)} */}
+              {/* <LoadSave /> */}
             </Col>
             <Col>
-              <ListBox/>
+              <ListBox />
             </Col>
             <br />
           </Row>
         </Container>
+        <Row>
+          <Col md={{ size: 4, offset: 4 }}>
+            <input className="schedule-name" value={this.props.name} placeholder="ScheduleName" onChange={this.props.addingAction.addValue.bind(this)} />
+          </Col>
+        </Row>
         <Schedule data={schedule} />
 
         {/* </div> */}
-      </React.Fragment>
+      </React.Fragment >
     );
   }
 }
 
 const mapStateToProps = state => ({
+  name: state.addSubject.name,
   schedule: state.schedule.schedule,
 
 })
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  addingAction: bindActionCreators(addingAction, dispatch),
+})
+export default connect(mapStateToProps, mapDispatchToProps)(App);

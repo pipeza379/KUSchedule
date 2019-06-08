@@ -1,0 +1,30 @@
+input.schedule-name {
+    /* width: 200px; */
+    margin-left:10%;
+    text-align: center;
+    width: 80%;
+    margin-bottom: 5px; 
+    height: 38.38px;
+    padding: 11.2px 15.4px;
+    font-style:oblique;
+    font-weight: bold;
+    font-size: 30px;
+    /* border: 0.30mm solid rgb(206, 206, 206); */
+    border:none;
+    /* position: relative; */
+}
+input.schedule-name::placeholder{
+    color: rgb(199, 195, 195)
+}
+
+
+input.schedule-name:focus {
+    border-radius: 25px;
+    border: 0.30mm solid rgb(131, 131, 131);
+    outline: none;
+}
+
+input:hover {
+    border-radius: 25px;
+    border: 0.30mm solid rgb(159, 159, 160);
+}

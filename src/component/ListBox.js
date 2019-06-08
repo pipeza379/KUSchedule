@@ -10,8 +10,8 @@ import '../css/listbox.css'
 import Time from '../data/time2.json'
 import Day from '../data/day2.json'
 
-import { ReactComponent as Edit } from '../icon/edit.svg'
-import { ReactComponent as Delete } from '../icon/delete.svg'
+import Edit from '../icon/edit.svg'
+import Delete from '../icon/delete.svg'
 
 class ListBox extends React.Component {
     constructor() {
@@ -36,7 +36,8 @@ class ListBox extends React.Component {
             let te = Time[(v.timeEnd * 2) - 12]
             let place = v.place === "" ? '' : "Place " + v.place
             let sec = v.sec === "" ? '' : "Sec " + v.sec
-            let c = Day.filter(d => d.value === v.day)
+            let day =  v.day[(v.day).length-1]==="2" ? v.day.split("2")[0]:v.day 
+            let c = Day.filter(d => d.value === day)
             table.push(
                 <Card className="card" fluid color={c[0].color} key={x} >
                     <CardContent>
@@ -45,8 +46,8 @@ class ListBox extends React.Component {
                                 <Col md={10}>
                                     <span>{v.course} {v.name}</span>
                                 </Col>
-                                <Col md={1}><Edit className="edit" index={x} onClick={this.selectSubject} /></Col>
-                                <Col md={1}><Delete className="rm" index={x} onClick={this.props.editSubject.removeSubject.bind(this, this.props.schedule)} /></Col>
+                                <Col md={1}><img src={Edit} alt="icon" className="edit" index={x} onClick={this.props.editSubject.editSub.bind(this, this.props.schedule)} /></Col>
+                                <Col md={1}><img src={Delete} alt="icon" className="rm" index={x} onClick={this.props.editSubject.removeSubject.bind(this, this.props.schedule)} /></Col>
                             </Row>
                         </CardHeader>
                         <CardDescription>

@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table'
 import '../css/schedule.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import EditColor from './EditColor';
-import { Popup, Button } from 'semantic-ui-react';
+import { Popup } from 'semantic-ui-react';
 
 // import styled from 'styled-components'
 
@@ -193,6 +193,8 @@ class Schedule extends Component {
                 case "Sud2":
                     Sud2[index].color = color
                     break
+                default:
+                    console.log("this's not in case")
             }
 
         }
@@ -390,7 +392,6 @@ class Schedule extends Component {
         return (
             <React.Fragment >
                 {this.representData()}
-                <h3 id="Name" style={{ textAlign: "center" }}>YourSchedule</h3>
                 <br />
                 < div className="row" >
                     <div id="table">

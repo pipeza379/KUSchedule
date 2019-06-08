@@ -51,10 +51,10 @@ function scheduleReducer(state = initialState, action) {
         case Action.REMOVESUBJECT:
             return {
                 schedule:action.newSchedule
-                
             }
         default:
             return state
+        
     }
 }
 export default scheduleReducer

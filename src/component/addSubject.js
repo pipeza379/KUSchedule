@@ -8,6 +8,7 @@ import '../css/course.css';
 
 import Action from '../actions';
 import * as addingAction from '../actions/addSub'
+import * as editSubject from '../actions/editSubject'
 
 import Time from '../data/time2.json';
 import Day from '../data/day2.json';
@@ -20,8 +21,8 @@ class InputSubject extends Component {
     constructor() {
         super()
         this.state = {
-            isActiveMain: true,
-            isActiveOther: false,
+            isActiveMain: false,
+            isActiveOther: true,
             isHiddenDetail: false,
             valSub: "",
         }
@@ -46,7 +47,11 @@ class InputSubject extends Component {
         this.props.invalidInputed(invalid)
 
         if (course !== "" && name !== "" && day !== "" && timeStart !== "" && timeEnd !== "" && (timeEnd > timeStart)) {
-            console.log("check")
+            if (this.props.edit) {
+                let index = this.props.select
+                console.log(index)
+                this.props.editSubject.removeSubject(this.props.schedule, index)
+            }
             this.props.addData(this.props.data)
             this.props.clearData()
             this.setState(
@@ -77,9 +82,35 @@ class InputSubject extends Component {
         }
     }
 
-    tab = (active) => {
-        return active ? "active item" : "item"
+    tab = active => active ? "active item" : "item"
+
+    checkEdit = () => {
+        let text = this.props.edit ? "CONFIRM EDIT" : "ADD"
+        console.log(this.props.edit)
+        console.log(text)
+        if (!this.props.edit) {
+            return (
+                <Row>
+                    <Col md={{ size: 6, offset: 3 }}>
+                        <button onClick={this.addBtn} className="add-btn" >{text}</button>
+                    </Col>
+                </Row>
+            )
+        }
+        else {
+            return (
+                <Row>
+                    <Col md={{ size: 4, offset: 2 }}>
+                        <button onClick={this.addBtn} className="edit-btn" >{text}</button>
+                    </Col>
+                    <Col md={{ size: 4 }}>
+                        <button onClick={this.props.clearData} className="cancel-btn" >CANCEL</button>
+                    </Col>
+                </Row>
+            )
+        }
     }
+
     render() {
         const data = this.props.data
         const invalid = this.props.invalid
@@ -89,33 +120,33 @@ class InputSubject extends Component {
                     <h3 className="sel-course">Add subject</h3>
                     <br />
                     <div className="main-course">
-                        <Row><Col md={10}>
+                        <Row><Col md={{ size: 10, offset: 1 }}>
                             <div id="tab" className="ui pointing menu" >
                                 <span className={this.tab(this.state.isActiveMain)} onClick={this.hidden.bind(this, "main")}>วิชาบูรณาการ</span>
                                 <span className={this.tab(this.state.isActiveOther)} onClick={this.hidden.bind(this, "other")}>อื่นๆ</span>
                             </div>
                         </Col></Row>
                         {this.state.isActiveMain &&
-                            <Row><Col md={10}>
+                            <Row><Col md={{ size: 10, offset: 1 }}>
                                 <Dropdown style={{ width: "100%", borderRadius: "25px", marginBottom: "4%" }}
                                     id={invalid.name} placeholder="Select Subject" value={this.state.valSub}
                                     search selection options={Data} onChange={this.props.addingAction.handleChange.bind(this, "subject")} />
                             </Col></Row>}
                         {this.state.isActiveOther &&
                             <Row>
-                                <Col md={5}> <input className="course" id={invalid.course} value={data.course} placeholder="Course" onChange={this.props.addingAction.addValue.bind(this)} /></Col>
+                                <Col md={{ size: 5, offset: 1 }}> <input className="course" id={invalid.course} value={data.course} placeholder="Course" onChange={this.props.addingAction.addValue.bind(this)} /></Col>
                                 <Col md={5}> <input className="name" id={invalid.name} value={data.name} placeholder="Subject" onChange={this.props.addingAction.addValue.bind(this)} /></Col>
                             </Row>
                         }
                         <Row>
-                            <Col md={10}>
+                            <Col md={{ size: 10, offset: 1 }}>
                                 <Dropdown style={{ width: "100%", borderRadius: "25px", marginBottom: "4%" }}
                                     id={invalid.day} placeholder="Select Day" value={data.day}
                                     selection options={Day} onChange={this.props.addingAction.handleChange.bind(this, 'day')} />
                             </Col>
                         </Row>
                         <Row>
-                            <Col md={5}>
+                            <Col md={{ size: 5, offset: 1 }}>
                                 <Dropdown style={{ width: "100%", borderRadius: "25px", marginBottom: "4%", position: "relative" }}
                                     id={invalid.timeStart} placeholder="Select Start" value={data.timeStart}
                                     selection options={Time} onChange={this.props.addingAction.handleChange.bind(this, 'timeStart')} />
@@ -127,7 +158,7 @@ class InputSubject extends Component {
                             </Col>
                         </Row>
                         <br />
-                        <Row><Col md={10}>
+                        <Row><Col md={{ size: 10, offset: 1 }}>
                             <h6 >Detail{!this.state.isHiddenDetail && <Down id="down" onClick={this.hidden.bind(this, "detail")} />}{this.state.isHiddenDetail && <Up id="down" onClick={this.hidden.bind(this, "detail")} />}</h6>
                             {this.state.isHiddenDetail &&
                                 <div>
@@ -136,14 +167,13 @@ class InputSubject extends Component {
                                         <Col><input className="sec" value={data.sec} placeholder="Sec" onChange={this.props.addingAction.addValue.bind(this)} /></Col>
                                         <Col><input className="place" value={data.place} placeholder="Place" onChange={this.props.addingAction.addValue.bind(this)} /></Col>
                                     </Row>
-                                    <Row>
+                                    {/* <Row> */}
                                         {/* <Col><input className="other" value={this.props.data.sec} placeholder="Other" onChange={this.props.addingAction.addValue()} /></Col> */}
-                                    </Row>
+                                    {/* </Row> */}
                                 </div>
-
                             }
-                            <button onClick={this.addBtn} className="add-btn" >ADD</button>
                         </Col></Row>
+                        {this.checkEdit()}
                         {!this.state.isHiddenDetail && <span id="showDetail" />}
                     </div>
                     <br />
@@ -158,11 +188,14 @@ class InputSubject extends Component {
 const mapStateToProps = state => ({
     data: state.addSubject.data,
     invalid: state.addSubject.invalid,
-    schedule: state.schedule.schedule
+    schedule: state.schedule.schedule,
+    edit: state.addSubject.edit,
+    select: state.addSubject.select,
 })
 
 const mapDispatchToProps = dispatch => ({
     addingAction: bindActionCreators(addingAction, dispatch),
+    editSubject: bindActionCreators(editSubject, dispatch),
     clearData: () => dispatch({ type: Action.CLEAR }),
     invalidInputed: (invalid) => dispatch({ type: Action.INVALID, invalid }),
     addData: (newSchedule) => dispatch({ type: Action.ADDDATA, schedule: newSchedule })
