@@ -1,6 +1,6 @@
 {
-  "name": "scheduleku",
-  "version": "0.2.3",
+  "name": "kuschedule",
+  "version": "2.3.0",
   "private": true,
   "homepage": "https://pipeza379.github.io/KUSchedule",
   "dependencies": {
@@ -11,9 +11,6 @@
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-scripts": "^3.0.1",
-    "react-select-search": "^0.9.6",
-    "react-sticky-box": "^0.8.0",
-    "react-svg": "^10.0.4",
     "reactstrap": "^8.0.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
