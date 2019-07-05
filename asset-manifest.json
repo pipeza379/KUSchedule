@@ -1,23 +1,25 @@
 {
   "files": {
-    "main.css": "/KUSchedule/static/css/main.bf5e026e.chunk.css",
-    "main.js": "/KUSchedule/static/js/main.c89fe1df.chunk.js",
-    "main.js.map": "/KUSchedule/static/js/main.c89fe1df.chunk.js.map",
+    "main.css": "/KUSchedule/static/css/main.0db0592a.chunk.css",
+    "main.js": "/KUSchedule/static/js/main.19b2ca48.chunk.js",
+    "main.js.map": "/KUSchedule/static/js/main.19b2ca48.chunk.js.map",
     "runtime~main.js": "/KUSchedule/static/js/runtime~main.bb8bd202.js",
     "runtime~main.js.map": "/KUSchedule/static/js/runtime~main.bb8bd202.js.map",
     "static/css/2.0f7a873c.chunk.css": "/KUSchedule/static/css/2.0f7a873c.chunk.css",
-    "static/js/2.76f4f895.chunk.js": "/KUSchedule/static/js/2.76f4f895.chunk.js",
-    "static/js/2.76f4f895.chunk.js.map": "/KUSchedule/static/js/2.76f4f895.chunk.js.map",
+    "static/js/2.44434808.chunk.js": "/KUSchedule/static/js/2.44434808.chunk.js",
+    "static/js/2.44434808.chunk.js.map": "/KUSchedule/static/js/2.44434808.chunk.js.map",
     "index.html": "/KUSchedule/index.html",
-    "precache-manifest.249c2d9bb10b12ece2eda0611a966e8e.js": "/KUSchedule/precache-manifest.249c2d9bb10b12ece2eda0611a966e8e.js",
+    "precache-manifest.d59b11b4d391fa1920312b7a484e1fb1.js": "/KUSchedule/precache-manifest.d59b11b4d391fa1920312b7a484e1fb1.js",
     "service-worker.js": "/KUSchedule/service-worker.js",
     "static/css/2.0f7a873c.chunk.css.map": "/KUSchedule/static/css/2.0f7a873c.chunk.css.map",
-    "static/css/main.bf5e026e.chunk.css.map": "/KUSchedule/static/css/main.bf5e026e.chunk.css.map",
+    "static/css/main.0db0592a.chunk.css.map": "/KUSchedule/static/css/main.0db0592a.chunk.css.map",
     "static/media/add.ca3efbf7.svg": "/KUSchedule/static/media/add.ca3efbf7.svg",
     "static/media/delete.svg": "/KUSchedule/static/media/delete.7c9993e1.svg",
     "static/media/down.c3d75740.svg": "/KUSchedule/static/media/down.c3d75740.svg",
     "static/media/edit-color.b3996ce6.svg": "/KUSchedule/static/media/edit-color.b3996ce6.svg",
     "static/media/edit.svg": "/KUSchedule/static/media/edit.45b30f6a.svg",
-    "static/media/up.24a93bb6.svg": "/KUSchedule/static/media/up.24a93bb6.svg"
+    "static/media/save.svg": "/KUSchedule/static/media/save.c293f3fc.svg",
+    "static/media/up.24a93bb6.svg": "/KUSchedule/static/media/up.24a93bb6.svg",
+    "static/media/upload.svg": "/KUSchedule/static/media/upload.3f7e59cc.svg"
   }
 }
