@@ -1,6 +1,6 @@
 import React from 'react';
 import StickyBox from 'react-sticky-box'
-import '../css/Sidebar.css'
+import '../asset/css/Sidebar.css'
 
 function Sidebar() {
         return (

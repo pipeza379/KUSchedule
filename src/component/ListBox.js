@@ -6,12 +6,12 @@ import { Card, CardContent, CardDescription, CardHeader } from "semantic-ui-reac
 
 import * as editSubject from '../actions/editSubject'
 
-import '../css/listbox.css'
-import Time from '../data/time2.json'
-import Day from '../data/day2.json'
+import '../asset/css/listbox.css'
+import Time from '../asset/data/time2.json'
+import Day from '../asset/data/day2.json'
 
-import Edit from '../icon/edit.svg'
-import Delete from '../icon/delete.svg'
+import Edit from '../asset/icon/edit.svg'
+import Delete from '../asset/icon/delete.svg'
 
 class ListBox extends React.Component {
     constructor() {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import './css/course.css'
-import './css/Sidebar.css'
-import { ReactComponent as Down } from './icon/down.svg'
-import { ReactComponent as Up } from './icon/up.svg'
+import '../asset/css/course.css'
+import '../asset/css/Sidebar.css'
+import { ReactComponent as Down } from '../asset/icon/down.svg'
+import { ReactComponent as Up } from '../asset/icon/up.svg'
 import { Container, Row, Col } from 'reactstrap';
 import { Dropdown } from 'semantic-ui-react';
 import ListBox from './component/ListBox'
@@ -13,40 +13,6 @@ import Schedule from './component/Schedule'
 import Time from './data/time2.json'
 import Day from './data/day2.json'
 import Data from './data/data.json'
-
-
-var data = [
-  {
-    "course": 123450,
-    "name": "Lab2",
-    "sec": "",
-    "day": "Md",
-    "timeStart": 9.5,
-    "timeEnd": 10.5,
-    "place": "",
-    "color": "",
-  },
-  {
-    "course": 111110,
-    "name": "compro",
-    "sec": "",
-    "day": "Md",
-    "timeStart": 10.5,
-    "timeEnd": 12.5,
-    "place": "E15",
-    "color": "",
-  },
-  {
-    "course": 114400,
-    "name": "comarc",
-    "sec": "999",
-    "day": "Td",
-    "timeStart": 6.5,
-    "timeEnd": 18.5,
-    "place": "",
-    "color": "",
-  },
-]
 
 class App extends Component {
   constructor(props) {

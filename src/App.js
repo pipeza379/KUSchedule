@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './css/app.css'
+import './asset/css/app.css'
 // import './css/Sidebar.css'
 import { Container, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
@@ -31,24 +31,13 @@ class App extends Component {
     }
   }
 
-  handleSaveToPC = jsonData => {
-    const fileData = JSON.stringify(jsonData);
-    const blob = new Blob([fileData], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.download = 'filename.json';
-    link.href = url;
-    if (this.state.checkClick)
-      link.click();
-  }
-
   editName = () => {
     this.setState({ editName: true })
   }
 
   render() {
     const schedule = this.props.schedule
-    console.log(schedule)
+    // console.log(schedule)
     return (
       <React.Fragment>
         <br />
@@ -66,7 +55,6 @@ class App extends Component {
               <InputSubject />
               {/* <button onClick={() => { this.setState({ checkClick: true }) }}>click!</button> */}
               {/* {this.handleSaveToPC(schedule)} */}
-              {/* <LoadSave /> */}
             </Col>
             <Col>
               <ListBox />
@@ -76,11 +64,15 @@ class App extends Component {
         </Container>
         <Row>
           <Col md={{ size: 4, offset: 4 }}>
-            <input className="schedule-name" value={this.props.name} placeholder="ScheduleName" onChange={this.props.addingAction.addValue.bind(this)} />
+            <input className="schedule-name" value={this.props.name} placeholder="EditScheduleName" onChange={this.props.addingAction.addValue.bind(this)} />
           </Col>
         </Row>
         <Schedule data={schedule} />
-
+        <Row>
+          <Col>
+            <LoadSave />
+          </Col>
+        </Row>
         {/* </div> */}
       </React.Fragment >
     );

@@ -1,0 +1,21 @@
+.load-save {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.load,.save{
+    margin: 10px;
+}
+.load>label {
+    cursor: pointer;
+}
+
+.load>input {
+    display: none;
+    z-index: -1;
+}
+
+.title {
+    text-align: center;
+    font-weight: bold;
+}

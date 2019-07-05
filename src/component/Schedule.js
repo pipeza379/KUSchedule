@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table'
-import '../css/schedule.css';
+import '../asset/css/schedule.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import EditColor from './EditColor';
 import { Popup } from 'semantic-ui-react';

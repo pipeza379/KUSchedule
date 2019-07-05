@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
-// import { Container, Row, Col } from 'reactstrap';
 import { Row, Col } from 'reactstrap';
 import { Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import '../css/course.css';
+import '../asset/css/course.css';
 
 import Action from '../actions';
 import * as addingAction from '../actions/addSub'
 import * as editSubject from '../actions/editSubject'
 
-import Time from '../data/time2.json';
-import Day from '../data/day2.json';
-import Data from '../data/data.json';
+import Time from '../asset/data/time2.json';
+import Day from '../asset/data/day2.json';
+import Data from '../asset/data/data.json';
 
-import { ReactComponent as Down } from '../icon/down.svg';
-import { ReactComponent as Up } from '../icon/up.svg';
+import { ReactComponent as Down } from '../asset/icon/down.svg';
+import { ReactComponent as Up } from '../asset/icon/up.svg';
 
 class InputSubject extends Component {
     constructor() {
@@ -86,8 +85,8 @@ class InputSubject extends Component {
 
     checkEdit = () => {
         let text = this.props.edit ? "CONFIRM EDIT" : "ADD"
-        console.log(this.props.edit)
-        console.log(text)
+        // console.log(this.props.edit)
+        // console.log(text)
         if (!this.props.edit) {
             return (
                 <Row>

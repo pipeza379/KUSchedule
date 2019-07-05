@@ -5,7 +5,7 @@ var initialState = {
     // isActiveOther: false,
     // isHiddenDetail: false,
     // valSub: "",
-    name:"Your Schedule",
+    name:"",
     data: {
         course: "",
         name: "",
