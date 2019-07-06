@@ -57,7 +57,7 @@ class LoadSave extends Component {
 }
 
 const mapStateToProps = state => ({
-    name: state.addSubject.name,
+    name: state.schedule.name,
     schedule: state.schedule.schedule,
 
 })

@@ -1,32 +1,31 @@
 import Action from '../actions'
-import initialState from './state'
-// var initialState = {
-//     // isActiveMain: true,
-//     // isActiveOther: false,
-//     // isHiddenDetail: false,
-//     // valSub: "",
-//     name: "",
-//     data: {
-//         course: "",
-//         name: "",
-//         sec: "",
-//         day: "",
-//         timeStart: "",
-//         timeEnd: "",
-//         place: "",
-//         color: "",
-//         other: "",
-//     },
-//     invalid: {
-//         course: "",
-//         name: "",
-//         day: "",
-//         timeStart: "",
-//         timeEnd: "",
-//     },
-//     edit: false,
-//     select: -1,
-// }
+var initialState = {
+    // isActiveMain: true,
+    // isActiveOther: false,
+    // isHiddenDetail: false,
+    // valSub: "",
+    name: "",
+    data: {
+        course: "",
+        name: "",
+        sec: "",
+        day: "",
+        timeStart: "",
+        timeEnd: "",
+        place: "",
+        color: "",
+        other: "",
+    },
+    invalid: {
+        course: "",
+        name: "",
+        day: "",
+        timeStart: "",
+        timeEnd: "",
+    },
+    edit: false,
+    select: -1,
+}
 
 function addSubjectReducer(state = initialState, action) {
     let { course, name, day, timeStart, timeEnd, place, sec, other } = action
@@ -145,11 +144,6 @@ function addSubjectReducer(state = initialState, action) {
                 data: action.data,
                 edit: action.edit,
                 select: action.select,
-            }
-        case Action.SCHEDULENAME:
-            return {
-                ...state,
-                name: action.schedulename,
             }
         default:
             return state
