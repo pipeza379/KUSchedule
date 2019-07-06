@@ -1,4 +1,4 @@
-input.schedule-name {
+input.schedulename {
     /* width: 200px; */
     margin-left:10%;
     text-align: center;
@@ -13,12 +13,12 @@ input.schedule-name {
     border:none;
     /* position: relative; */
 }
-input.schedule-name::placeholder{
+input.schedulename::placeholder{
     color: rgb(199, 195, 195)
 }
 
 
-input.schedule-name:focus {
+input.schedulename:focus {
     border-radius: 25px;
     border: 0.30mm solid rgb(131, 131, 131);
     outline: none;

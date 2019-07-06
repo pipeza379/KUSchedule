@@ -64,7 +64,7 @@ class App extends Component {
         </Container>
         <Row>
           <Col md={{ size: 4, offset: 4 }}>
-            <input className="schedule-name" value={this.props.name} placeholder="EditScheduleName" onChange={this.props.addingAction.addValue.bind(this)} />
+            <input className="schedulename" value={this.props.name} placeholder="EditScheduleName" onChange={this.props.addingAction.addValue.bind(this)} />
           </Col>
         </Row>
         <Schedule data={schedule} />

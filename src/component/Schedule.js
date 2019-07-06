@@ -60,12 +60,7 @@ class Schedule extends Component {
     }
 
     // shouldComponentUpdate(nextProps,nextState){
-    //     if(this.props.data !== nextProps.data || this.state !== nextState){
-    //         return true
-    //     }
-    //     // if(this.state !== nextState)
-    //     //     return true
-    //     return false
+    //     return this.props.data !== nextProps.data || this.state.selCurrent !== nextState.selCurrent
     // }
 
     // componentWillUpdate(nextProps){
@@ -298,12 +293,12 @@ class Schedule extends Component {
             for (let i = 0; i < box.length; i++) {
                 if (box[i][0] === prevEnd && (box[i][1] - box[i][0]) !== 0) {
                     console.log(box[i])
-                    table.push(<td className="space" rowSpan="1" colSpan={(box[i][1] - box[i][0]) * 2}></td>)
+                    table.push(<td className="space" key={`${i}${course}`} rowSpan="1" colSpan={(box[i][1] - box[i][0]) * 2}></td>)
                     prevEnd = box[i][1]
                 }
             }
             if (start - prevEnd !== 0)
-                table.push(<td className="space" rowSpan="2" colSpan={(start - prevEnd) * 2}></td>)
+                table.push(<td className="space" key={course} rowSpan="2" colSpan={(start - prevEnd) * 2}></td>)
             let cspan = (end - start) * 2
             let rspan = subject.overlap ? 1 : 2
             let que = count % 2 === 0 ? "even" : "odd";
@@ -321,6 +316,7 @@ class Schedule extends Component {
                     }
                     on='click'
                     flowing
+                    key={name}
                 />
             )
             prevEnd = end
@@ -335,7 +331,7 @@ class Schedule extends Component {
         // console.log(this.state.lastTime, prevEnd)
         let backSpace = this.state.lastTime - prevEnd
         if (backSpace)
-            table.push(<td className="space" rowSpan="2" colSpan={(backSpace) * 2}></td>)
+            table.push(<td className="space" key={`${backSpace}${count}`} rowSpan="2" colSpan={(backSpace) * 2}></td>)
 
         return table
     }
@@ -360,10 +356,10 @@ class Schedule extends Component {
         // this.setState({
         //     length: (end - start * 2) + 1
         // })
-        head.push(<th colSpan="2">#</th>)
+        head.push(<th colSpan="2" key={start}>#</th>)
         for (let i = start; i < end; i++) {
             let time = i < 10 ? `0${i}.00` : `${i}.00`
-            head.push(<th className="time" colSpan="2">{time}</th>)
+            head.push(<th className="time" key={time} colSpan="2">{time}</th>)
         }
         return head
     }
@@ -375,7 +371,7 @@ class Schedule extends Component {
         // table.push(<Tds className="base" colSpan="1" />)
         len = (parseInt(this.state.lastTime) - parseInt(this.state.startTime) + 1) * 2
         for (let i = 0; i < (end - start + 1) * 2; i++) {
-            table.push(<td colSpan="1" style={{ backgroundColor: "#3d3d3f", width: `${100 / len}%` }} />)
+            table.push(<td colSpan="1" key={`${i}${start}${end}`} style={{ backgroundColor: "#3d3d3f", width: `${100 / len}%` }} />)
         }
         return table
     }
@@ -389,9 +385,9 @@ class Schedule extends Component {
 
 
     render() {
+        this.representData()
         return (
             <React.Fragment >
-                {this.representData()}
                 <br />
                 < div className="row" >
                     <div id="table">

@@ -9,6 +9,7 @@ export default class Action {
     static ADDTIMEEND = "ADDTIMEEND"
     static ADDSEC = "ADDSEC"
     static ADDPLACE = "ADDPLACE"
+    static ADDOTHER = "ADDOTHER"
     static CLEAR = "CLEAR"
     static INVALID = "INVALID"
 

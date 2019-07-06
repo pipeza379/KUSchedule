@@ -1,5 +1,5 @@
 import Action from '../actions'
-
+import initialState from "./state"
 // var data = [
 //     {
 //         "course": 123450,
@@ -33,14 +33,15 @@ import Action from '../actions'
 //     },
 // ]
 
-var initialState = {
-    schedule: [],
-}
+// var initialState = {
+//     schedule: [],
+// }
 
 function scheduleReducer(state = initialState, action) {
     switch (action.type) {
         case Action.ADDDATA:
             return {
+                ...state,
                 schedule: [
                     ...state.schedule,
                     action.schedule
@@ -48,11 +49,14 @@ function scheduleReducer(state = initialState, action) {
             }
         case Action.REMOVESUBJECT:
             return {
+                ...state,
                 schedule:action.newSchedule
             }
         case Action.LOADSCHEDULE:
             return{
-                schedule:action.schedule
+                ...state,
+                schedule:action.schedule,
+                name:action.name                
             }
         default:
             return state

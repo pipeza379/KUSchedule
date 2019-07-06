@@ -23,15 +23,20 @@ export function addValue(data) {
             type: Action.ADDPLACE,
             [name]: value,
         })
-    else if(name==="schedule-name")
-    return ({
-        type: Action.SCHEDULENAME,
-        [name]: value,
-    })
+    else if (name === "other")
+        return ({
+            type: Action.ADDOTHER,
+            [name]: value,
+        })
+    else if (name === "schedulename")
+        return ({
+            type: Action.SCHEDULENAME,
+            [name]: value,
+        })
 }
 
 
-export function handleChange(set, event, data){
+export function handleChange(set, event, data) {
     let val = data.value
     if (set === "timeStart") {
         return ({
@@ -53,11 +58,11 @@ export function handleChange(set, event, data){
     }
     else if (set === "subject") {
         let { course, name } = val
-        this.setState({valSub: val})
+        this.setState({ valSub: val })
         return ({
             type: Action.ADDSUBJECT,
             course,
             name
-        })        
+        })
     }
 }

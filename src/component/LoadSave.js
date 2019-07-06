@@ -9,21 +9,15 @@ import "../asset/css/LoadSave.css"
 class LoadSave extends Component {
 
     handleSaveToPC = () => {
-        const schedule = this.props.schedule
+        const schedule = { schedule: this.props.schedule, name: this.props.name }
         const fileData = JSON.stringify(schedule);
         const blob = new Blob([fileData], { type: "text/plain" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
-        link.download = `${this.props.name}.json`;
+        let name_file = this.props.name !== ""?`${this.props.name}.json`:"schedule.json"
+        link.download = name_file;
         link.href = url;
         link.click();
-    }
-
-
-    onReaderLoad(file) {
-        var obj = JSON.parse(file.result);
-        console.log(obj)
-        // alert_data(obj.name, obj.family);
     }
 
     handleUploadFile = (event) => {
@@ -34,8 +28,9 @@ class LoadSave extends Component {
         reader.onload = e => {
             try {
                 json = JSON.parse(e.target.result);
-                console.log(json)
-                this.props.loadSchedule(json)
+                // console.log(json)
+                let {name,schedule} = json
+                this.props.loadSchedule(name,schedule)
             } catch (ex) {
                 alert('cannot readfile ' + ex);
             }
@@ -67,6 +62,6 @@ const mapStateToProps = state => ({
 
 })
 const mapDispatchToProps = dispatch => ({
-    loadSchedule: schedule => dispatch({ type: Action.LOADSCHEDULE, schedule })
+    loadSchedule: (name,schedule) => dispatch({ type: Action.LOADSCHEDULE, name,schedule })
 })
 export default connect(mapStateToProps, mapDispatchToProps)(LoadSave);

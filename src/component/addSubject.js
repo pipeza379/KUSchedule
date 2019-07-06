@@ -121,7 +121,7 @@ class InputSubject extends Component {
                     <div className="main-course">
                         <Row><Col md={{ size: 10, offset: 1 }}>
                             <div id="tab" className="ui pointing menu" >
-                                <span className={this.tab(this.state.isActiveMain)} onClick={this.hidden.bind(this, "main")}>วิชาบูรณาการ</span>
+                                {/* <span className={this.tab(this.state.isActiveMain)} onClick={this.hidden.bind(this, "main")}>วิชาบูรณาการ</span> */}
                                 <span className={this.tab(this.state.isActiveOther)} onClick={this.hidden.bind(this, "other")}>อื่นๆ</span>
                             </div>
                         </Col></Row>
@@ -140,19 +140,19 @@ class InputSubject extends Component {
                         <Row>
                             <Col md={{ size: 10, offset: 1 }}>
                                 <Dropdown style={{ width: "100%", borderRadius: "25px", marginBottom: "4%" }}
-                                    id={invalid.day} placeholder="Select Day" value={data.day}
+                                    id={invalid.day} placeholder="Select Day" value={data.day} search
                                     selection options={Day} onChange={this.props.addingAction.handleChange.bind(this, 'day')} />
                             </Col>
                         </Row>
                         <Row>
                             <Col md={{ size: 5, offset: 1 }}>
                                 <Dropdown style={{ width: "100%", borderRadius: "25px", marginBottom: "4%", position: "relative" }}
-                                    id={invalid.timeStart} placeholder="Select Start" value={data.timeStart}
+                                    id={invalid.timeStart} placeholder="Select Start" value={data.timeStart} search
                                     selection options={Time} onChange={this.props.addingAction.handleChange.bind(this, 'timeStart')} />
                             </Col>
                             <Col md={5}>
                                 <Dropdown style={{ width: "100%", borderRadius: "25px", marginBottom: "4%", position: "relative" }}
-                                    id={invalid.timeEnd} placeholder="Select End" value={data.timeEnd}
+                                    id={invalid.timeEnd} placeholder="Select End" value={data.timeEnd} search
                                     selection clearable={true} options={Time} onChange={this.props.addingAction.handleChange.bind(this, 'timeEnd')} />
                             </Col>
                         </Row>
@@ -163,12 +163,21 @@ class InputSubject extends Component {
                                 <div>
                                     <br />
                                     <Row>
-                                        <Col><input className="sec" value={data.sec} placeholder="Sec" onChange={this.props.addingAction.addValue.bind(this)} /></Col>
-                                        <Col><input className="place" value={data.place} placeholder="Place" onChange={this.props.addingAction.addValue.bind(this)} /></Col>
+                                        <Col>
+                                            <input className="sec" value={data.sec} placeholder="Sec"
+                                                onChange={this.props.addingAction.addValue.bind(this)} />
+                                        </Col>
+                                        <Col>
+                                            <input className="place" value={this.props.data.place} placeholder="Place"
+                                                onChange={this.props.addingAction.addValue.bind(this)} />
+                                        </Col>
                                     </Row>
-                                    {/* <Row> */}
-                                        {/* <Col><input className="other" value={this.props.data.sec} placeholder="Other" onChange={this.props.addingAction.addValue()} /></Col> */}
-                                    {/* </Row> */}
+                                    <Row>
+                                        <Col>
+                                            <input className="other" value={data.other} placeholder="Other"
+                                                onChange={this.props.addingAction.addValue.bind(this)} />
+                                        </Col>
+                                    </Row>
                                 </div>
                             }
                         </Col></Row>

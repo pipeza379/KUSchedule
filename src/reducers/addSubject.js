@@ -1,144 +1,113 @@
 import Action from '../actions'
-
-var initialState = {
-    // isActiveMain: true,
-    // isActiveOther: false,
-    // isHiddenDetail: false,
-    // valSub: "",
-    name:"",
-    data: {
-        course: "",
-        name: "",
-        sec: "",
-        day: "",
-        timeStart: "",
-        timeEnd: "",
-        place: "",
-        color: "",
-    },
-    invalid: {
-        course: "",
-        name: "",
-        day: "",
-        timeStart: "",
-        timeEnd: "",
-    },
-    edit: false,
-    select: -1,
-}
+import initialState from './state'
+// var initialState = {
+//     // isActiveMain: true,
+//     // isActiveOther: false,
+//     // isHiddenDetail: false,
+//     // valSub: "",
+//     name: "",
+//     data: {
+//         course: "",
+//         name: "",
+//         sec: "",
+//         day: "",
+//         timeStart: "",
+//         timeEnd: "",
+//         place: "",
+//         color: "",
+//         other: "",
+//     },
+//     invalid: {
+//         course: "",
+//         name: "",
+//         day: "",
+//         timeStart: "",
+//         timeEnd: "",
+//     },
+//     edit: false,
+//     select: -1,
+// }
 
 function addSubjectReducer(state = initialState, action) {
-    let { course, name, day, timeStart, timeEnd, place, sec } = action
+    let { course, name, day, timeStart, timeEnd, place, sec, other } = action
     switch (action.type) {
         case Action.ADDSUBJECT:
             return {
-                name:state.name,
+                ...state,
                 data: {
                     ...state.data,
                     name,
                     course
                 },
-                invalid: {
-                    ...state.invalid,
-                    course: "",
-                    name: ""
-                },
-                edit: state.edit,
-                select: state.select,
             }
 
         case Action.ADDCOURSE:
             return {
-                name:state.name,
+                ...state,
                 data: {
                     ...state.data,
                     course
                 },
-                invalid: {
-                    ...state.invalid,
-                    course: ""
-                },
-                edit: state.edit,
-                select: state.select,
             }
         case Action.ADDNAME:
             return {
-                name:state.name,
+                ...state,
                 data: {
                     ...state.data,
                     name
                 },
-                invalid: {
-                    ...state.invalid,
-                    name: ""
-                },
-                edit: state.edit,
-                select: state.select,
             }
         case Action.ADDDAY:
             return {
-                name:state.name,
+                ...state,
                 data: {
                     ...state.data,
                     day
                 },
-                invalid: {
-                    ...state.invalid,
-                    day: ""
-                },
-                edit: state.edit,
-                select: state.select,
             }
         case Action.ADDTIMESTART:
             return {
-                name:state.name,
+                ...state,
                 data: {
                     ...state.data,
                     timeStart
                 },
-                invalid: {
-                    ...state.invalid,
-                    timeStart: ""
-                }, 
-                edit: state.edit,
-                select: state.select,
             }
         case Action.ADDTIMEEND:
             return {
-                name:state.name,
+                ...state,
                 data: {
                     ...state.data,
                     timeEnd
                 },
-                invalid: {
-                    ...state.invalid,
-                    timeEnd: ""
-                },
-                edit:state.edit,
-                select:state.select,
             }
         case Action.ADDSEC:
             return {
-                name:state.name,
+                ...state,
                 data: {
                     ...state.data,
                     sec
                 },
-                edit: state.edit
             }
         case Action.ADDPLACE:
             return {
-                name:state.name,
+                ...state,
                 data: {
                     ...state.data,
                     place
                 },
-                edit:state.edit,
-                select:state.select,
+            }
+        case Action.ADDOTHER:
+            return {
+                ...state,
+                data: {
+                    ...state.data,
+                    other
+                },
             }
         case Action.CLEAR:
             return {
-                name:state.name,
+                name: state.name,
                 data: {
                     course: "",
                     name: "",
@@ -178,9 +147,9 @@ function addSubjectReducer(state = initialState, action) {
                 select: action.select,
             }
         case Action.SCHEDULENAME:
-            return{
+            return {
                 ...state,
-                name:action.nameSchedule,
+                name: action.schedulename,
             }
         default:
             return state
